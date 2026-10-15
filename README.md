@@ -1,12 +1,21 @@
 # OmindOS Locomotion · legged-robot
 
 OmindOS 足式机器人模块，首个平台为 **RoboParty Roboto Origin 双足机器人**。
-当前版本为 `0.1.0a2`，提供官方模型和策略的独立 MuJoCo 适配器，以及 ROS2 的速度指令和状态接口。
+当前版本为 `0.1.0a3`，提供官方模型和策略的独立 MuJoCo 适配器，以及 ROS2 的速度指令和状态接口。
 
 本仓库是双足模块的独立开发仓：[OmindOS-Locomotion](https://github.com/maganrobotics-boop/OmindOS-Locomotion)。
 Python 包名 `omindos-legged-robot`、导入名 `omindos_legged` 和命令 `legged-robot` 保持兼容。
-已发布的 `0.1.0a2` 安装包保留在[原发行页](https://github.com/maganrobotics-boop/omindos/releases/tag/legged-robot-v0.1.0a2)，本次迁移不覆盖该版本的产物。
-主分支提交运行测试和基准仿真；新仓库发布需手动触发工作流并选中 `publish_release`，标签使用 `legged-robot-v<版本>`。
+
+| 用途 | 入口 |
+| --- | --- |
+| 开发版、源程序、问题反馈 | [OmindOS-Locomotion](https://github.com/maganrobotics-boop/OmindOS-Locomotion)（本仓库） |
+| 发布版、安装包、校验文件 | [OmindOS-Locomotion-Release](https://github.com/maganrobotics-boop/OmindOS-Locomotion-Release/releases) |
+| 从下载安装到运行的完整步骤 | [中文使用指南](docs/USAGE.zh-CN.md) |
+| 直接观看已完成的仿真 | [在线回放](https://cloud.omindos.cn/legged-robot/) |
+
+下载运行请选择发布仓库的 `legged-robot-v0.1.0a3`，安装其中的 `.whl`；修改程序才需要克隆本仓库。版本仍属于**仿真预发布**，不代表实机或完整导航系统已经验收。
+本仓库的提交只触发检查和构建；发布仓库固定源码提交，重新检查后发布安装包。维护流程见 [docs/RELEASING.md](docs/RELEASING.md)。
+旧 `0.1.0a2` 安装包保留在[原发行页](https://github.com/maganrobotics-boop/omindos/releases/tag/legged-robot-v0.1.0a2)。
 源码迁移来源与历史验收记录见 [docs/MIGRATION.md](docs/MIGRATION.md)。
 
 ## 已实现
@@ -26,12 +35,12 @@ Python 包名 `omindos-legged-robot`、导入名 `omindos_legged` 和命令 `leg
 
 ## 本地启动
 
-以下验收使用 Linux、Python 3.12。ROS2 应使用与系统 ROS 发行版匹配的 Python，见 [ROS2 接入](docs/ROS2.md)。
+以下为开发源码启动方式，使用 Linux、Python 3.12。只想使用发布版请按[中文使用指南的 wheel 安装步骤](docs/USAGE.zh-CN.md#2-安装发布版推荐)操作。ROS2 应使用与系统 ROS 发行版匹配的 Python，见 [ROS2 接入](docs/ROS2.md)。
 
 ```bash
 git clone https://github.com/maganrobotics-boop/OmindOS-Locomotion.git
 cd OmindOS-Locomotion
-python3 -m venv --system-site-packages .venv
+python3.12 -m venv .venv
 .venv/bin/pip install -r requirements-sim.txt
 .venv/bin/pip install -e '.[sim,test]'
 .venv/bin/legged-robot list
@@ -99,7 +108,7 @@ OMINDOS_LEGGED_TEST_ASSETS="$PWD/assets/roboto-origin" .venv/bin/python -m pytes
 第二条加载官方模型和策略，执行控制周期、映射、限幅和故障停止检查。
 本次实际链路记录见 [docs/VALIDATION.json](docs/VALIDATION.json)。
 
-服务器上的实际 20 秒仿真可在 [OmindOS 仿真回放](https://cloud.omindos.cn/legged-robot/) 查看；页面源码与部署说明位于 [deploy/server-replay](deploy/server-replay/README.md)。回放不会启动新物理计算。
+服务器上的实际 20 秒仿真可在 [OmindOS 仿真回放](https://cloud.omindos.cn/legged-robot/) 查看；页面源码与部署说明位于 [deploy/server-replay](deploy/server-replay/README.md)。回放不会启动新物理计算。此次安装包发布不会自动更新线上回放的历史版本。
 
 ## 来源
 

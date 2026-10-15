@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-10-15T08:43:18.354202+08:00",
+  "package_version": "0.1.0a3",
+  "source_base": "26d43371e70a417b98e2fb81b0947b839b41b6b0",
+  "changes": "Documentation, separate development/release repositories, package version and release packaging; controller and pinned assets unchanged.",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "inference": "CPUExecutionProvider"
+  },
+  "tests": {
+    "tests": 66,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "verified_assets": 34,
+  "baseline": {
+    "status": "completed",
+    "scenario": "baseline",
+    "simulated_duration_s": 20.00000000000146,
+    "control_steps": 1000,
+    "minimum_base_height_m": 0.7358362760645076,
+    "mean_forward_velocity_body_m_s": 0.25932022545592354
+  },
+  "baseline_csv_sha256": "10774f9be0231f2c67e8a9665b93debd22598a62bc885a54bbf29526325323b2",
+  "clean_wheel_install": {
+    "version": "0.1.0a3",
+    "dependencies_installed": false,
+    "list_passed": true,
+    "description_status": "description_loaded",
+    "dof": 23
+  },
+  "packaging": {
+    "wheel_and_sdist_built": true,
+    "wheel_crc_and_license_checked": true,
+    "sdist_usage_guide_and_replay_checked": true,
+    "workflow_yaml_and_shell_syntax_checked": true
+  },
+  "limits": {
+    "native_ros2_validated": false,
+    "hardware_validated": false,
+    "terrain_validated": false,
+    "new_video_rendered": false,
+    "online_replay_redeployed": false
+  },
+  "release_gate": "Release repository repeats actual-asset tests, baseline, build and clean wheel simulation before publication."
+}
